@@ -7,9 +7,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>$Title$</title>
+    <title>SpringMM</title>
 </head>
 <body>
-$END$
+SpringMM
 </body>
 </html>

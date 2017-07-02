@@ -15,13 +15,13 @@
 </head>
 <body>
 <form action="" method="post">
-   <%-- <h1>${des}</h1>--%>
+   <h1>${des}</h1>
     <div>* @Description: SpringMvc的配置详解</div>
     <div>* @Author:sunys</div>
     <div>* @Date: 2017/7/1  12:12</div>
-   <%-- <c:forEach items="${listpojo}" var="item">
+   <c:forEach items="${listpojo}" var="item">
           ${item.name}-${item.id}
-    </c:forEach>--%>
+    </c:forEach>
 </form>
 
 </body>
