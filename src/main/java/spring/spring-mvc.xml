@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--启用spring的一些annotation -->
+    <!--<context:annotation-config/>-->
+
+    <!-- ****************配置Handler 开始*********************-->
+    <bean id="queryController" name="/query.action" class="com.syshlang.smm.controller.QueryController"></bean>
+    <bean id="queryHttpController" name="/httpquery.action" class="com.syshlang.smm.controller.QueryHttpController">
+    </bean>
+    <!-- ****************配置Handler 结束*********************-->
+
+
+    <!--  *********************配置处理器映射器 开始*************************************** -->
+    <!--
+        所有的适配器都实现了HandlerMapping接口
+    -->
+    <!--第一种方式：最简单的，一个class对应一个handler（非注解）
+    将bean的name当作url来查找，需要在配置Handler时配置bean的name(就是url)，如上
+    -->
+    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping">
+    </bean>
+    <!--第二种方式 集中映射配置 （非注解）
+     SimpleUrlHandlerMapping是BeanNameUrlHandlerMapping的增强版本，
+     它可以将url和处理器的bean的id进行统一的映射配置
+    -->
+    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <prop key="/query0.action">queryController</prop>
+                <prop key="/query1.action">queryController</prop>
+                <prop key="/httpquery0.action">queryHttpController</prop>
+                <prop key="/httpquery1.action">queryHttpController</prop>
+                <!--<prop key="url地址">Controller的bean的id</prop>-->
+            </props>
+        </property>
+    </bean>
+
+    <!--
+    结论：① 多个映射器可以并存；
+         ② 一个bean可以对应多个url；
+         ③HandlerMapping 无需配置，springmvc可以默认启动
+    -->
+
+    <!-- ********************************配置处理器映射器  结束************************** -->
+
+    <!--  *********************配置处理器适配器 开始*************************************** -->
+    <!--
+        所有的处理器适配器都实现HandlerAdapter接口
+    -->
+    <!--配置处理器适配器 (非注解)
+      public boolean supports(Object handler) {
+        return handler instanceof Controller;
+    }
+
+      SimpleControllerHandlerAdapter中的support方法可以看出：
+      编写的handler需要实现Controller接口
+      public interface Controller {
+        ModelAndView handleRequest(HttpServletRequest var1, HttpServletResponse var2) throws Exception;
+    }
+        由此，开发Handler时需要实现Controller接口才能由org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter来执行
+    -->
+    <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter">
+    </bean>
+    <!--
+      HttpRequestHandlerAdapter 是http请求处理适配器，
+      所有实现了HttpRequestHandler接口的bean通过此适配器进行适配、执行
+     public boolean supports(Object handler) {
+        return handler instanceof HttpRequestHandler;
+    }
+
+    由HttpRequestHandlerAdapter中的support方法可以看出：
+    编写的handler需要实现HttpRequestHandler接口
+    public interface HttpRequestHandler {
+    void handleRequest(HttpServletRequest var1, HttpServletResponse var2) throws ServletException, IOException;
+}
+    -->
+    <bean class="org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter"></bean>
+    <!--  *********************配置处理器适配器 结束*************************************** -->
+
+    <!--  *********************配置视图解析器 开始*************************************** -->
+    <!--视图解析器
+    解析jsp文件，默认使用jstl的标签
+    classpatch下要有jstl的jar包
+    -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"></bean>
+    <!--  *********************配置视图解析器 结束*************************************** -->
+
+    <bean id="log4jInitialization" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="targetClass" value="org.springframework.util.Log4jConfigurer" />
+        <property name="targetMethod" value="initLogging" />
+        <property name="arguments">
+            <list>
+                <value>classpath:log4j.properties</value>
+            </list>
+        </property>
+    </bean>
+
+</beans>
