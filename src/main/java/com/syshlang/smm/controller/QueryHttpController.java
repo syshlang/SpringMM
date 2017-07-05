@@ -12,7 +12,8 @@ import java.util.List;
 
 /**
  * Created by sunys on 2017/7/1 12:39.
- * Description: 实现HttpRequestHandler接口
+ * Description: HttpRequestHandlerAdapter 是http请求处理适配器
+ *              使用该处理器适配器实现HttpRequestHandler接口
  */
 public class QueryHttpController implements HttpRequestHandler{
     @Override
@@ -24,7 +25,7 @@ public class QueryHttpController implements HttpRequestHandler{
         pojo.setName("aaaaaa");
         list.add(pojo);
         httpServletRequest.setAttribute("listpojo",list);
-        httpServletRequest.setAttribute("des","实现HttpRequestHandler接口");
+        httpServletRequest.setAttribute("des","HttpRequestHandlerAdapter 是http请求处理适配器,使用该处理器适配器实现HttpRequestHandler接口");
         httpServletRequest.getRequestDispatcher("/view/query.jsp").forward(httpServletRequest,httpServletResponse);
     }
 }

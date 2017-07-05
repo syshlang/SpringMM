@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  * Created by sunys on 2017/7/1 2:44.
- * Description: 实现Controller接口的处理器
+ * Description: 使用SimpleControllerHandlerAdapter处理器适配器实现Controller接口的处理器
  */
 public class QueryController implements Controller{
 
@@ -32,7 +32,7 @@ public class QueryController implements Controller{
         ModelAndView modelAndView = new ModelAndView();
         //相当于request的setAttribut,在jsp页面通过list取值
         modelAndView.addObject("listpojo",list);
-        modelAndView.addObject("des","实现Controller接口的处理");
+        modelAndView.addObject("des","使用SimpleControllerHandlerAdapter处理器适配器实现Controller接口的处理器");
         //指定视图View
         modelAndView.setViewName("/view/query.jsp");
         //输出日志文件
