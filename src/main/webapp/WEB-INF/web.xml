@@ -27,7 +27,7 @@
     -->
     <init-param>
       <param-name>contextConfigLocation</param-name>
-      <param-value>classpath:spring/spring-mvc.xml</param-value>
+      <param-value>classpath:config/spring/spring-mvc.xml</param-value>
     </init-param>
     <!--
     1)load-on-startup元素标记容器是否在启动的时候就加载这个servlet(实例化并调用其
