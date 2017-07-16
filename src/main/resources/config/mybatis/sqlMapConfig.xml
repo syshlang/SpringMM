@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration  PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
@@ -16,7 +15,16 @@
 必须遵循：mapper.xml和mapper.java文件同名且在一个目录
  -->
 
-<!-- <mappers>
-
-</mappers> -->
+<!--
+<mappers>
+     通过mapper元素的resource属性可以指定一个相对于类路径的Mapper.xml文件
+    <mapper resource="com/syshlang/smm/mapping/ItemsMapper.xml"/>
+    通过mapper元素的url属性可以指定一个通过URL请求道的Mapper.xml文件
+    <mapper url="file:///E:\Workspaces\Intellij\SpringMM\src\main\resources\com\syshlang\smm\mapping\ItemsMapper.xml"/>
+    通过mapper元素的class属性可以指定一个Mapper接口进行注册
+    <mapper class="com.syshlang.smm.mapper.ItemsMapper"/>
+    通过package元素将会把指定包下面的所有Mapper接口进行注册
+    <package name="com.syshlang.smm.mapper"/>
+</mappers>
+-->
 </configuration>
