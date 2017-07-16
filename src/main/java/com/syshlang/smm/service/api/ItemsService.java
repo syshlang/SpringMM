@@ -2,6 +2,7 @@ package com.syshlang.smm.service.api;
 
 import com.syshlang.smm.pojo.ItemsCustom;
 import com.syshlang.smm.pojo.ItemsQueryVo;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -14,6 +15,7 @@ import java.util.List;
  * @date	2017-07-13下午3:48:09
  * @version 1.0
  */
+@Service
 public interface ItemsService {
 	
 	//商品查询列表

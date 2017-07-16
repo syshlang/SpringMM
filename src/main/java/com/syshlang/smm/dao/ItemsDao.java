@@ -6,6 +6,7 @@ import com.syshlang.smm.pojo.Items;
 import com.syshlang.smm.pojo.ItemsCustom;
 import com.syshlang.smm.pojo.ItemsQueryVo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -13,6 +14,7 @@ import java.util.List;
  * Created by sunys on 2017/7/16 2:55.
  * Description:
  */
+@Repository
 public class ItemsDao {
     @Autowired
     private ItemsMapperCustom itemsMapperCustom;

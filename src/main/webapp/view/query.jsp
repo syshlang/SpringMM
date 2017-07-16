@@ -19,7 +19,7 @@
     <div>* @Author:sunys</div>
     <div>* @Date: 2017/7/1  12:12</div>
    <c:forEach items="${listpojo}" var="item">
-          ${item.name}-${item.id}
+          ${item.id}-${item.name}-${item.price}-${item.pic}-${item.createtime}-${item.detail}
     </c:forEach>
 </body>
 </html>

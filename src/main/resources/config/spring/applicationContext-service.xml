@@ -12,5 +12,5 @@
 		http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
 		http://www.springframework.org/schema/tx
 		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd ">
-    <bean id="itemsserviceimpl"  class="com.syshlang.smm.service.impl.ItemsServiceImpl" />
+    <bean id="itemsService"  class="com.syshlang.smm.service.impl.ItemsServiceImpl" />
 </beans>

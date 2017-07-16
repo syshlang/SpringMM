@@ -2,12 +2,16 @@ package com.syshlang.smm.service.impl;
 
 import com.syshlang.smm.dao.ItemsDao;
 import com.syshlang.smm.exception.CustomException;
+import com.syshlang.smm.mapper.ItemsMapper;
+import com.syshlang.smm.mapper.ItemsMapperCustom;
 import com.syshlang.smm.pojo.Items;
 import com.syshlang.smm.pojo.ItemsCustom;
 import com.syshlang.smm.pojo.ItemsQueryVo;
 import com.syshlang.smm.service.api.ItemsService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -20,6 +24,7 @@ import java.util.List;
  * @date	2017-07-13下午3:49:54
  * @version 1.0
  */
+@Repository
 public class ItemsServiceImpl implements ItemsService{
 
 	@Autowired

@@ -1,12 +1,16 @@
 package com.syshlang.smm.controller;
 
-import com.syshlang.smm.pojo.QueryPojo;
+import com.syshlang.smm.exception.CustomException;
+import com.syshlang.smm.pojo.ItemsCustom;
+import com.syshlang.smm.pojo.ItemsQueryVo;
+import com.syshlang.smm.service.api.ItemsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  * Created by sunys on 2017/7/5 22:53.
@@ -15,16 +19,26 @@ import java.util.List;
 
 
 @Controller  //标识该类是一个控制器
+@RequestMapping("items")
 public class QueryAnnotationController {
 
+    @Autowired
+    private ItemsService itemsService;
     @RequestMapping("/Query")
     public ModelAndView QueryController(){
         //调用service层，查询数据库
-        List<QueryPojo> list = new ArrayList<QueryPojo>();
-        QueryPojo pojo = new QueryPojo();
-        pojo.setId("1");
-        pojo.setName("aaaaaa");
-        list.add(pojo);
+        List<ItemsCustom> list = null;
+        try {
+            ItemsCustom itemsCustom = new ItemsCustom();
+            itemsCustom.setName("机");
+            ItemsQueryVo itemsQueryVo  = new ItemsQueryVo();
+            itemsQueryVo.setItemsCustom(itemsCustom);
+            list = itemsService.findItemsList(itemsQueryVo);
+        } catch (CustomException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         //返回ModelAndView
         ModelAndView modelAndView = new ModelAndView();
         //相当于request的setAttribut,在jsp页面通过list取值
